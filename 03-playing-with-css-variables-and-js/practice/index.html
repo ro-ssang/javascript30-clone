@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Variables with JS</title>
+  </head>
+  <body>
+    <h1>CSS Variables with <span class="h1">JS</span></h1>
+    <div class="container">
+      <label for="spacing">Spacing:</label>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="10"
+        name="spacing"
+        data-unit="px"
+      />
+      <label for="blur">Blur:</label>
+      <input
+        type="range"
+        min="0"
+        max="20"
+        value="4"
+        name="blur"
+        data-unit="px"
+      />
+      <label for="base">Color:</label>
+      <input type="color" value="#f1c40f" name="baseColor" />
+    </div>
+    <img
+      src="https://images.unsplash.com/photo-1597834793391-e5bdbeb4037a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+    />
+  </body>
+
+  <style>
+    :root {
+      --spacing: 10px;
+      --blur: 4px;
+      --baseColor: #f1c40f;
+    }
+
+    body {
+      background-color: #34495e;
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      font-size: 30px;
+      font-weight: 100;
+      color: white;
+    }
+
+    .h1 {
+      color: var(--baseColor);
+    }
+
+    .container {
+      margin-bottom: 20px;
+    }
+
+    img {
+      padding: var(--spacing);
+      filter: blur(var(--blur));
+      background-color: var(--baseColor);
+    }
+  </style>
+
+  <script>
+    const inputs = document.querySelectorAll("input");
+
+    function handleUpdate() {
+      const name = this.name;
+      const value = this.value;
+      const unit = this.dataset.unit || "";
+      document.documentElement.style.setProperty(
+        `--${name}`,
+        `${value}${unit}`
+      );
+    }
+
+    inputs.forEach((input) => {
+      input.addEventListener("change", handleUpdate);
+      input.addEventListener("mousemove", handleUpdate);
+    });
+  </script>
+</html>
