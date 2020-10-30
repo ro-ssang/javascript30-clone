@@ -4,3 +4,4 @@
 - [x] Day 02: CSS variables and Array cardio
 - [x] Day 03: Flex panels and Ajax type ahead
 - [x] Day 04: Array cardio 2 and HTML5 canvas
+- [x] Day 05: Dev tools domination and Hold shift and check checkboxes
