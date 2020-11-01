@@ -38,6 +38,7 @@
         background-color: black;
         width: 3px;
         transform-origin: top;
+        transition: all 0.3s cubic-bezier(0.26, -0.71, 0.75, 2.21);
       }
 
       .clock__hour-hand {
@@ -66,13 +67,15 @@
 
       function setTime() {
         const now = new Date();
-        const hours = now.getHours();
+        const hours =
+          now.getHours() < 12 ? now.getHours() : now.getHours() - 12;
         const minutes = now.getMinutes();
         const seconds = now.getSeconds();
 
-        const hourDeg = hours;
-        const minDeg = (360 / 60) * minutes + 180;
+        const hourDeg = (360 / 12) * hours + (30 / 60) * minutes + 180;
+        const minDeg = (360 / 60) * minutes + (6 / 60) * seconds + 180;
         const secDeg = (360 / 60) * seconds + 180;
+        hourHand.style.transform = `rotate(${hourDeg}deg)`;
         minuteHand.style.transform = `rotate(${minDeg}deg)`;
         secondHand.style.transform = `rotate(${secDeg}deg)`;
       }
