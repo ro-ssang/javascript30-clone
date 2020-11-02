@@ -6,4 +6,4 @@
 - [x] Day 04: Array cardio 2 and HTML5 canvas
 - [x] Day 05: Dev tools domination and Hold shift and check checkboxes
 - [x] Day 06: Custom video player and Key sequence detection
-- [ ] Day 07: Slide in on scroll and JavaScript references VS Copying
+- [x] Day 07: Slide in on scroll and JavaScript references VS Copying
